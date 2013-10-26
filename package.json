@@ -1,0 +1,30 @@
+{
+  "name": "mailSender",
+  "version": "0.0.1",
+  "description": "Learning the relevant knowledge about e-mail",
+  "homepage": "http://miniflycn.github.io/mailSender",
+  "repository": "git://github.com/miniflycn/mailSender.git",
+  "author": "Daniel Yang <miniflycn@gmail.com>",
+  "main": "index",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "nodemailer": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "connect": "*",
+    "blanket": "*",
+    "coveralls": "*",
+    "mocha-lcov-reporter": "*"
+  },
+  "scripts": {
+    "test": "mocha",
+    "blanket": {
+      "pattern": "mailSender/lib"
+    }
+  }
+}
