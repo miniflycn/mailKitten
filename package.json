@@ -10,7 +10,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "nodemailer": "*"
+    "nodemailer": "*",
+    "connect": "*",
+    "urlrouter": "*"
   },
   "devDependencies": {
     "mocha": "*",
