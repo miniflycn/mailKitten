@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>安装</title>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/install.css">
+</head>
+<body>
+	<div id="alert-container">
+	</div>
+	<div class="install-container off">
+		<div class="panel panel-theme">
+			<div class="panel-heading">
+				<p class="panel-title">安装</p>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div id="install-form">
+							<div class="form-group">
+								<label for="email">电子邮箱 <span style="color: red;">*</span></label>
+								<input type="email" id="email" class="form-control" name="user">
+							</div>
+							<div class="form-group">
+								<label for="pwd">密码 <span style="color: red;">*</span></label>
+								<input type="password" id="pwd" class="form-control" name="pass">
+							</div>
+							<div class="form-group">
+								<button type="submit" id="submit" class="btn btn-primary">确定</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('.off').removeClass('off');
+
+			$('#submit').on('click', function () {
+				var user = $('#email').val(),
+					pass = $('#pwd').val(),
+					data = {
+						user: user,
+						pass: pass
+					};
+				$.post('./controller/install', data, function (data) {
+					if (data.code === 0) {
+						return $('.install-container').addClass('off');
+					} else {
+						var alert = $(['<div class="alert alert-warning alert-dismissable">',
+							'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
+							'<strong>Warning!</strong> ',
+							data.message,
+							'</div>'].join(''));
+						$('#alert-container').append(alert);
+						setTimeout(function () {
+							alert.alert('close');
+						}, 5000);
+					}
+				}, 'json');
+			});
+		});
+	</script>
+</body>
+</html>

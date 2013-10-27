@@ -1,0 +1,33 @@
+.install-container {
+  padding: 20px;
+  -webkit-transition: margin-top 0.4s;
+  transition: margin-top 0.4s;
+}
+.install-container.off {
+  margin-top: -500px;
+}
+@media (min-width: 480px) {
+  .install-container {
+    width: 440px;
+    margin: 60px auto;
+  }
+}
+.panel-theme {
+  border-color: #3bb0c6;
+}
+.panel-theme .panel-heading {
+  border-color: #3bb0c6;
+  background-color: #3bb0c6;
+}
+.panel-theme .panel-heading .panel-title {
+  color: #fff;
+}
+#alert-container {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  z-index: 100;
+}
+#alert-container .alert {
+  margin-bottom: 0px;
+}

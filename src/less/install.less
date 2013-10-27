@@ -1,0 +1,38 @@
+@import "var.less";
+@import "mixins.less";
+
+.install-container {
+  padding: 20px;
+  .transition(margin-top 0.4s);
+  &.off {
+    margin-top: -500px;
+  }
+}
+
+@media (min-width: 480px) {
+  .install-container {
+    width: 440px;
+    margin: 60px auto;
+  }
+}
+
+.panel-theme {
+  border-color: @sea;
+  .panel-heading {
+    border-color: @sea;
+    background-color: @sea;
+    .panel-title {
+      color: #fff;
+    }
+  }
+}
+
+#alert-container {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  z-index: 100;
+  .alert {
+    margin-bottom: 0px;
+  }
+}

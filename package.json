@@ -2,7 +2,6 @@
   "name": "mailSender",
   "version": "0.0.1",
   "description": "Learning the relevant knowledge about e-mail",
-  "homepage": "http://miniflycn.github.io/mailSender",
   "repository": "git://github.com/miniflycn/mailSender.git",
   "author": "Daniel Yang <miniflycn@gmail.com>",
   "main": "index",
@@ -19,7 +18,9 @@
     "connect": "*",
     "blanket": "*",
     "coveralls": "*",
-    "mocha-lcov-reporter": "*"
+    "mocha-lcov-reporter": "*",
+    "grunt": "*",
+    "grunt-contrib-less": "*"
   },
   "scripts": {
     "test": "mocha",
