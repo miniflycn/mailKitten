@@ -12,7 +12,7 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready(function () {
-			$.get('./controller/login', function (data) {
+			$.get('./controller/auth', function (data) {
 				if (data.code !== 0) {
 					location.replace('./login.html');
 				}
