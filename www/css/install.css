@@ -16,6 +16,11 @@ body {
   -moz-transition: margin-top 4s;
   -o-transition: margin-top 4s;
   transition: margin-top 4s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
   z-index: 100;
 }
 #pic-cat.in {
