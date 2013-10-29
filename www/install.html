@@ -20,15 +20,18 @@
 						<div id="install-form">
 							<div class="form-group">
 								<label for="isp">服务提供商 <span style="color: red;">*</span></label>
-								<input type="text" id="isp" class="form-control" name="isp">
+								<input type="text" id="isp" class="form-control" name="isp" data-validate="mandatory">
+								<span class="help-block help-error"></span>
 							</div>
 							<div class="form-group">
 								<label for="email">电子邮箱 <span style="color: red;">*</span></label>
-								<input type="email" id="email" class="form-control" name="user">
+								<input type="email" id="email" class="form-control" name="user" data-validate="mandatory email">
+								<span class="help-block help-error"></span>
 							</div>
 							<div class="form-group">
 								<label for="pwd">密码 <span style="color: red;">*</span></label>
-								<input type="password" id="pwd" class="form-control" name="pass">
+								<input type="password" id="pwd" class="form-control" name="pass" data-validate="mandatory">
+								<span class="help-block help-error"></span>
 							</div>
 							<div class="form-group">
 								<button type="submit" id="submit" class="btn btn-primary">确定</button>
@@ -42,6 +45,7 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="./js/ui.js"></script>
 	<script>
 		$(document).ready(function () {
 			$('.off').removeClass('off');
@@ -59,15 +63,7 @@
 					if (data.code === 0) {
 						return $('.install-container').addClass('off');
 					} else {
-						var alert = $(['<div class="alert alert-warning alert-dismissable">',
-							'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
-							'<strong>Warning!</strong> ',
-							data.message,
-							'</div>'].join(''));
-						$('#alert-container').append(alert);
-						setTimeout(function () {
-							alert.alert('close');
-						}, 5000);
+						return UI('#alert-container').warning(data.message);
 					}
 				}, 'json');
 			});

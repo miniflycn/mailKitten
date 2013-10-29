@@ -1,6 +1,8 @@
 .install-container {
   padding: 20px;
   -webkit-transition: margin-top 0.4s;
+  -moz-transition: margin-top 0.4s;
+  -o-transition: margin-top 0.4s;
   transition: margin-top 0.4s;
 }
 .install-container.off {
