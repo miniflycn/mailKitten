@@ -1,11 +1,23 @@
 @import "var.less";
 @import "mixins.less";
 
+body {
+  background-color: #8eadaf;
+}
+
 .install-container {
   padding: 20px;
   .transition(margin-top 0.4s);
   &.off {
     margin-top: -500px;
+  }
+}
+
+#pic-cat {
+  .transition(margin-top 4s);
+  z-index: 100;
+  &.in {
+    margin-top: -100px;
   }
 }
 

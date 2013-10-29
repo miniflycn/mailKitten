@@ -1,3 +1,6 @@
+body {
+  background-color: #8eadaf;
+}
 .install-container {
   padding: 20px;
   -webkit-transition: margin-top 0.4s;
@@ -7,6 +10,16 @@
 }
 .install-container.off {
   margin-top: -500px;
+}
+#pic-cat {
+  -webkit-transition: margin-top 4s;
+  -moz-transition: margin-top 4s;
+  -o-transition: margin-top 4s;
+  transition: margin-top 4s;
+  z-index: 100;
+}
+#pic-cat.in {
+  margin-top: -100px;
 }
 @media (min-width: 480px) {
   .install-container {
