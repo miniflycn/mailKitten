@@ -1,3 +1,8 @@
+// Utilities
+// -------------------------
+
+// Clearfix
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
 .clearfix() {
   *zoom: 1;
   &:before,
@@ -10,7 +15,64 @@
   }
 }
 
+// CSS3 PROPERTIES
+// --------------------------------------------------
+
+// Border radius
+// Chrome 4.0+, Firefox 4.0+, IE 9+, Opera 10.5+, Safari 5.0+
+.border-top-radius(@radius) {
+  border-top-right-radius: @radius;
+   border-top-left-radius: @radius;
+}
+.border-right-radius(@radius) {
+  border-bottom-right-radius: @radius;
+     border-top-right-radius: @radius;
+}
+.border-bottom-radius(@radius) {
+  border-bottom-right-radius: @radius;
+   border-bottom-left-radius: @radius;
+}
+.border-left-radius(@radius) {
+  border-bottom-left-radius: @radius;
+     border-top-left-radius: @radius;
+}
+
+// Drop shadows
+// none | [inset? && [ <offset-x> <offset-y> <blur-radius>? <spread-radius>? <color>? ] ]
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+          box-shadow: @shadow;
+}
+
+// Transitions
+// [none | <property>] || <time> || <timing-function> || <time>
 .transition(@transition) {
   -webkit-transition: @transition;
+     -moz-transition: @transition; // Firefox 4.0 - 16.0
+       -o-transition: @transition; // Opera 11.6 - 12.10
           transition: @transition;
+}
+
+// <time>
+.transition-delay(@transition-delay) {
+  -webkit-transition-delay: @transition-delay;
+     -moz-transition-delay: @transition-delay;
+       -o-transition-delay: @transition-delay;
+          transition-delay: @transition-delay;
+}
+
+// <time>
+.transition-duration(@transition-duration) {
+  -webkit-transition-duration: @transition-duration;
+     -moz-transition-duration: @transition-duration;
+       -o-transition-duration: @transition-duration;
+          transition-duration: @transition-duration;
+}
+
+// Opacity
+.opacity(@opacity) {
+  opacity: @opacity;
+  // IE filter
+  @opacity-ie: (@opacity * 100);
+  filter: ~"alpha(opacity=@{opacity-ie})";
 }
