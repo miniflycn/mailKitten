@@ -5,6 +5,10 @@
 		});
 	}
 
+	/**
+	 * one
+	 * @param {Element} ele
+	 */
 	function one(ele) {
 		ele = $(ele);
 		var valids = ele.attr('data-validate').split(/\s+/),
@@ -28,6 +32,10 @@
 		return true;
 	}
 
+	/**
+	 * all
+	 * @param {Selector} container
+	 */
 	function all(container) {
 		var _$ = $('input[data-validate]', container),
 			len = _$.length,

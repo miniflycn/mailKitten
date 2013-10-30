@@ -1,3 +1,9 @@
+/*!
+ * mailKitten-UI
+ * Bootstrap like UI libaray
+ * Copyright (c) 2013 Daniel Yang <miniflycn@justany.net>
+ * MIT Licensed
+ */
 !function ($) {
 
 	function UI(selector) {

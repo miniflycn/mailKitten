@@ -1,6 +1,10 @@
 !function (UI, $) {
 
 	$.extend(UI.fn, {
+		/**
+		 * warning
+		 * @param {String} msg
+		 */
 		warning: function (msg) {
 			var alert = $([
 				'<div class="alert alert-warning alert-dismissable">',

@@ -1,3 +1,9 @@
+/*!
+ * mailKitten-UI
+ * Bootstrap like UI libaray
+ * Copyright (c) 2013 Daniel Yang <miniflycn@justany.net>
+ * MIT Licensed
+ */
 !function ($) {
 
 	function UI(selector) {
@@ -26,6 +32,10 @@
 ;!function (UI, $) {
 
 	$.extend(UI.fn, {
+		/**
+		 * warning
+		 * @param {String} msg
+		 */
 		warning: function (msg) {
 			var alert = $([
 				'<div class="alert alert-warning alert-dismissable">',
@@ -51,6 +61,10 @@
 		});
 	}
 
+	/**
+	 * one
+	 * @param {Element} ele
+	 */
 	function one(ele) {
 		ele = $(ele);
 		var valids = ele.attr('data-validate').split(/\s+/),
@@ -74,6 +88,10 @@
 		return true;
 	}
 
+	/**
+	 * all
+	 * @param {Selector} container
+	 */
 	function all(container) {
 		var _$ = $('input[data-validate]', container),
 			len = _$.length,
