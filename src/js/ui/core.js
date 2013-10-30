@@ -19,12 +19,5 @@
 
 	UI.lang = {};
 
-	// Init	
-	$(document).ready(function () {
-		if ($('input[data-validate]').length) {
-			UI.validate();
-		}
-	});
-
 	window.UI = UI;
 }($);

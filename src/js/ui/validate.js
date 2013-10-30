@@ -66,5 +66,12 @@
 		all: all
 	});
 
+	// Init	
+	$(document).ready(function () {
+		if ($('input[data-validate]').length) {
+			validate();
+		}
+	});
+
 	UI.validate = validate;
 }(UI, $);
