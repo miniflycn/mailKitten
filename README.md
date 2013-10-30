@@ -1,4 +1,4 @@
-# mailSender
+# mailKitten
 
 ## Project Goals
 Learning the relevant knowledge about e-mail.
