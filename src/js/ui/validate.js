@@ -1,50 +1,4 @@
-!function ($) {
-
-	function UI(selector) {
-		return new UI.fn.init(selector);
-	}
-	UI.fn = UI.prototype = {
-		constructor: UI,
-		init: function (selector) {
-			this.$ = $(selector);
-		}
-	};
-	UI.fn.init.prototype = UI.fn;
-
-	UI.lang = {};
-
-	// Init	
-	$(document).ready(function () {
-		if ($('input[data-validate]').length) {
-			UI.validate();
-		}
-	});
-
-	window.UI = UI;
-}($);
-
-;!function (UI, $) {
-
-	$.extend(UI.fn, {
-		warning: function (msg) {
-			var alert = $([
-				'<div class="alert alert-warning alert-dismissable">',
-				'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
-				'<strong>Warning!</strong> ',
-				msg,
-				'</div>'
-			].join(''));
-
-			this.$.append(alert);
-			setTimeout(function () {
-				alert.alert('close');
-			}, 5000);
-		}
-	});
-
-}(UI, $);
-
-;!function (UI, $) {
+!function (UI, $) {
 	function validate() {
 		$(document).on('focusout', 'input[data-validate]', function (event) {
 			return one(event.target);
@@ -106,11 +60,3 @@
 
 	UI.validate = validate;
 }(UI, $);
-
-
-;!function (UI) {
-	UI.lang.validate = {
-		email: 'Invalid email address.',
-		mandatory: 'Input required.'
-	};
-}(UI);

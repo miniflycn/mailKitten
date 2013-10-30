@@ -20,11 +20,26 @@ module.exports = function (grunt) {
           'www/css/install.css': 'src/less/install.less'
         }
       }
+    },
+    concat: {
+      options: {
+        separator: '\n\n;'
+      },
+      dist: {
+        src: [
+          'src/js/ui/core.js',
+          'src/js/ui/alert.js', 
+          'src/js/ui/validate.js', 
+          'src/js/ui/lang/validate.js'
+        ],
+        dest: 'www/js/ui.js'
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('default', ['less:dev']);
-  grunt.registerTask('pro', ['less:pro']);
+  grunt.registerTask('default', ['less:dev', 'concat']);
+  grunt.registerTask('pro', ['less:pro', 'concat']);
 };

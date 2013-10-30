@@ -1,5 +1,5 @@
 {
-  "name": "mailSender",
+  "name": "mailKitten",
   "version": "0.0.1",
   "description": "Learning the relevant knowledge about e-mail",
   "repository": "git://github.com/miniflycn/mailSender.git",
@@ -22,12 +22,13 @@
     "coveralls": "*",
     "mocha-lcov-reporter": "*",
     "grunt": "*",
-    "grunt-contrib-less": "*"
+    "grunt-contrib-less": "*",
+    "grunt-contrib-contact": "*"
   },
   "scripts": {
     "test": "mocha",
     "blanket": {
-      "pattern": "mailSender/lib"
+      "pattern": "mailKitten/lib"
     }
   }
 }
