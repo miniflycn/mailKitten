@@ -53,21 +53,23 @@
 			$('#pic-cat').addClass('in');
 
 			$('#submit').on('click', function () {
-				var user = $('#email').val(),
-					pass = $('#pwd').val(),
-					isp = $('#isp').val(),
-					data = {
-						isp: isp,
-						user: user,
-						pass: pass
-					};
-				$.post('./controller/install', data, function (data) {
-					if (data.code === 0) {
-						return $('.install-container').addClass('off');
-					} else {
-						return UI('#alert-container').warning(data.message);
-					}
-				}, 'json');
+				if (UI.validate.all('#install-form')) {
+					var user = $('#email').val(),
+						pass = $('#pwd').val(),
+						isp = $('#isp').val(),
+						data = {
+							isp: isp,
+							user: user,
+							pass: pass
+						};
+					$.post('./controller/install', data, function (data) {
+						if (data.code === 0) {
+							return $('.install-container').addClass('off');
+						} else {
+							return UI('#alert-container').warning(data.message);
+						}
+					}, 'json');
+				}
 			});
 		});
 	</script>

@@ -48,19 +48,21 @@
 			$('#pic-cat').addClass('in');
 
 			$('#submit').on('click', function () {
-				var user = $('#email').val(),
-					pass = $('#pwd').val(),
-					data = {
-						user: user,
-						pass: pass
-					};
-				$.post('./controller/login', data, function (data) {
-					if (data.code === 0) {
-						return location.replace('./app.html');
-					} else {
-						return UI('#alert-container').warning(data.message);
-					}
-				}, 'json');
+				if (UI.validate.all('#install-form')) {
+					var user = $('#email').val(),
+						pass = $('#pwd').val(),
+						data = {
+							user: user,
+							pass: pass
+						};
+					$.post('./controller/login', data, function (data) {
+						if (data.code === 0) {
+							return location.replace('./app.html');
+						} else {
+							return UI('#alert-container').warning(data.message);
+						}
+					}, 'json');
+				}
 			});
 		});
 	</script>
