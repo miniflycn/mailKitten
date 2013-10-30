@@ -12,15 +12,13 @@ body {
   margin-top: -500px;
 }
 #pic-cat {
+  width: 220px;
+  height: 229px;
   -webkit-transition: margin-top 4s;
   -moz-transition: margin-top 4s;
   -o-transition: margin-top 4s;
   transition: margin-top 4s;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
+  background-image: url(../pic/cat.png);
   z-index: 100;
 }
 #pic-cat.in {

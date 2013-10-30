@@ -30,35 +30,29 @@
 
 	UI.lang = {};
 
-	function _validate() {
-		$('input[data-validate]').each(function (index, ele) {
-			var ele = $(ele),
-				valids = $(ele).attr('data-validate').split(/\s+/);
+	UI.validate = function () {
+		$(document).on('focusout', 'input[data-validate]', function (event) {
+			var ele = $(event.target),
+				valids = $(ele).attr('data-validate').split(/\s+/),
+				value = ele.val(),
+				group = ele.closest('.form-group'),
+				helper = $('.help-error', group),
+				len = valids.length,
+				valid;
 
-			ele.on('blur', function (event) {
-				var value = ele.val(),
-					group = ele.closest('.form-group'),
-					helper = $('.help-error', group),
-					len = valids.length,
-					valid;
-				for (var i = 0; i < len; i++) {
-					valid = valids[i];
-					if (!UI.validate[valid](value)) {
-						group.addClass('has-error');
-						helper.html(UI.lang.validate[valid]);
-						return;
-					}
+			for (var i = 0; i < len; i++) {
+				valid = valids[i];
+				if (!UI.validate[valid](value)) {
+					group.addClass('has-error');
+					helper.html(UI.lang.validate[valid]);
+					return;
 				}
-				group.removeClass('has-error');
-				helper.empty();
-			});
+			}
+			group.removeClass('has-error');
+			helper.empty();
 		});
-	}
-	UI.lang.validate = {
-		email: 'Invalid email address.',
-		mandatory: 'Input required.'
 	};
-	UI.validate = {
+	$.extend(UI.validate, {
 		isEmail: (/^[\w\.]+@([a-zA-Z0-9\-]{1,63}\.)+[a-zA-Z0-9\-]{1,63}$/),
 		email: function (value) {
 			if (!$.trim(value)) {
@@ -70,11 +64,17 @@
 		mandatory: function (value) {
 			return !!value;
 		}
+	});
+	UI.lang.validate = {
+		email: 'Invalid email address.',
+		mandatory: 'Input required.'
 	};
 
 	// Init	
 	$(document).ready(function () {
-		_validate();
+		if ($('#input[data-validate]').length) {
+			UI.validate();
+		}
 	});
 
 	window.UI = UI;
