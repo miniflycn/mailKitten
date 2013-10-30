@@ -42,6 +42,8 @@
 			setTimeout(function () {
 				alert.alert('close');
 			}, 5000);
+			
+			return this;
 		}
 	});
 
@@ -100,19 +102,21 @@
 
 
 	$.extend(validate, {
-		isEmail: (/^[\w\.]+@([a-zA-Z0-9\-]{1,63}\.)+[a-zA-Z0-9\-]{1,63}$/),
 		email: function (value) {
 			if (!$.trim(value)) {
 				return true;
 			}
 			value = $.trim(value.toLowerCase());
-			return this.isEmail.test(value);
+			return this.is.email.test(value);
 		},
 		mandatory: function (value) {
 			return !!value;
 		},
 		one: one,
 		all: all
+	});
+	$.extend(validate.is = {}, {
+		email: (/^[\w\.]+@([a-zA-Z0-9\-]{1,63}\.)+[a-zA-Z0-9\-]{1,63}$/)
 	});
 
 	// Init	
@@ -129,14 +133,27 @@
 ;!function (UI, $) {
 
 	$.extend(UI.fn, {
+		/**
+		 * on
+		 * @param {String} type
+		 * @param {Function} callback
+		 */
 		on: function (type, callback) {
 			this.$.on('ui-' + type, callback);
 			return this;
 		},
+		/**
+		 * on
+		 * @param {String} type
+		 */
 		trigger: function (type) {
 			this.$.trigger('ui-' + type);
 			return this;
 		},
+		/**
+		 * scan
+		 * @param {String} type
+		 */
 		scan: function (type) {
 			var attr = 'data-' + type,
 				self = this;

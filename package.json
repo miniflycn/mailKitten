@@ -17,13 +17,12 @@
   "devDependencies": {
     "mocha": "*",
     "should": "*",
-    "connect": "*",
     "blanket": "*",
     "coveralls": "*",
     "mocha-lcov-reporter": "*",
     "grunt": "*",
     "grunt-contrib-less": "*",
-    "grunt-contrib-contact": "*"
+    "grunt-contrib-concat": "*"
   },
   "scripts": {
     "test": "mocha",

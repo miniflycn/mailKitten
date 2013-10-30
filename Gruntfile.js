@@ -30,7 +30,7 @@ module.exports = function (grunt) {
           'src/js/ui/core.js',
           'src/js/ui/alert.js', 
           'src/js/ui/validate.js',
-          'src/js/ui/on.js',
+          'src/js/ui/event.js',
           'src/js/ui/lang/validate.js'
         ],
         dest: 'www/js/ui.js'

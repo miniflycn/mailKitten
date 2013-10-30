@@ -51,19 +51,21 @@
 
 
 	$.extend(validate, {
-		isEmail: (/^[\w\.]+@([a-zA-Z0-9\-]{1,63}\.)+[a-zA-Z0-9\-]{1,63}$/),
 		email: function (value) {
 			if (!$.trim(value)) {
 				return true;
 			}
 			value = $.trim(value.toLowerCase());
-			return this.isEmail.test(value);
+			return this.is.email.test(value);
 		},
 		mandatory: function (value) {
 			return !!value;
 		},
 		one: one,
 		all: all
+	});
+	$.extend(validate.is = {}, {
+		email: (/^[\w\.]+@([a-zA-Z0-9\-]{1,63}\.)+[a-zA-Z0-9\-]{1,63}$/)
 	});
 
 	// Init	

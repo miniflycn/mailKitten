@@ -18,6 +18,8 @@
 			setTimeout(function () {
 				alert.alert('close');
 			}, 5000);
+			
+			return this;
 		}
 	});
 
