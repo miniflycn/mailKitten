@@ -72,7 +72,7 @@
 
 	// Init	
 	$(document).ready(function () {
-		if ($('#input[data-validate]').length) {
+		if ($('input[data-validate]').length) {
 			UI.validate();
 		}
 	});
