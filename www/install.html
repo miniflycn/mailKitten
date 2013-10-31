@@ -66,7 +66,7 @@
 						if (data.code === 0) {
 							return $('.install-container').addClass('off');
 						} else {
-							return UI('#alert-container').warning(data.message);
+							return UI('#alert-container').alert('warning', data.message);
 						}
 					}, 'json');
 				}

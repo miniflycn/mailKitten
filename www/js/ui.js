@@ -26,14 +26,16 @@
 
 	$.extend(UI.fn, {
 		/**
-		 * warning
+		 * alert
+		 * @param {String} type
 		 * @param {String} msg
 		 */
-		warning: function (msg) {
+		alert: function (type, msg) {
 			var alert = $([
-				'<div class="alert alert-warning alert-dismissable">',
+				'<div class="alert alert-',
+				type,
+				' alert-dismissable">',
 				'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
-				'<strong>Warning!</strong> ',
 				msg,
 				'</div>'
 			].join(''));
@@ -42,7 +44,7 @@
 			setTimeout(function () {
 				alert.alert('close');
 			}, 5000);
-			
+
 			return this;
 		}
 	});
