@@ -57,7 +57,7 @@
 						};
 					UI.ajax.post('login', data).done(function (data) {
 						if (data.code === 0) {
-							return location.replace('./app.html');
+							return UI('.install-container').slideOut('./app.html');
 						} else {
 							return UI('#alert-container').alert('danger', data.message);
 						}

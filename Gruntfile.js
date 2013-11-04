@@ -8,7 +8,8 @@ module.exports = function (grunt) {
           paths: ['src/less']
         },
         files: {
-          'www/css/install.css': 'src/less/install.less'
+          'www/css/install.css': 'src/less/install.less',
+          'www/css/main.css': 'src/less/main.less'
         }
       },
       pro: {
@@ -17,7 +18,8 @@ module.exports = function (grunt) {
           yuicompress: true
         },
         files: {
-          'www/css/install.css': 'src/less/install.less'
+          'www/css/install.css': 'src/less/install.less',
+          'www/css/main.css': 'src/less/main.css'
         }
       }
     },
@@ -32,6 +34,7 @@ module.exports = function (grunt) {
           'src/js/ui/validate.js',
           'src/js/ui/event.js',
           'src/js/ui/ajax.js',
+          'src/js/ui/animate.js',
           'src/js/ui/lang/validate.js'
         ],
         dest: 'www/js/ui.js'

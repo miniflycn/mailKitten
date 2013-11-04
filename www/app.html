@@ -4,15 +4,19 @@
 	<meta charset="utf-8" />
 	<title>应用</title>
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="./css/install.css">
+	<link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-	<button type="button" class="btn btn-primary btn-lg" id="logout">Logout</button>
+	<div class="container">
+		<button type="button" class="btn btn-primary btn-lg" id="logout">Logout</button>
+	</div>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="./js/ui.js"></script>
 	<script>
 		$(document).ready(function () {
+			UI('.container').slideIn();
+
 			UI.ajax.get('auth').done(function (data) {
 				if (data.code !== 0) {
 					location.replace('/login.html');
@@ -21,7 +25,7 @@
 			$('#logout').on('click', function () {
 				UI.ajax.get('logout').done(function (data) {
 					if (data.code === 0) {
-						location.replace('/login.html');
+						return UI('.container').slideOut('/login.html');
 					}
 				});
 			});
