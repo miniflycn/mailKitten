@@ -62,13 +62,13 @@
 							user: user,
 							pass: pass
 						};
-					$.post('./controller/install', data, function (data) {
+					UI.ajax.post('install', data).done(function (data) {
 						if (data.code === 0) {
 							return $('.install-container').addClass('off');
 						} else {
 							return UI('#alert-container').alert('danger', data.message);
 						}
-					}, 'json');
+					});
 				}
 			});
 			

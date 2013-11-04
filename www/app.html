@@ -10,18 +10,18 @@
 	<button type="button" class="btn btn-primary btn-lg" id="logout">Logout</button>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="./js/ui.js"></script>
 	<script>
 		$(document).ready(function () {
-			$.get('./controller/auth', function (data) {
+			UI.ajax.get('auth').done(function (data) {
 				if (data.code !== 0) {
-					location.replace('./login.html');
+					location.replace('/login.html');
 				}
 			});
-
 			$('#logout').on('click', function () {
-				$.get('./controller/logout', function (data) {
+				UI.ajax.get('logout').done(function (data) {
 					if (data.code === 0) {
-						location.replace('./login.html');
+						location.replace('/login.html');
 					}
 				});
 			});

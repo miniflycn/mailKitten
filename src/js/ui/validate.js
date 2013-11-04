@@ -23,7 +23,10 @@
 			valid = valids[i];
 			if (!UI.validate[valid](value)) {
 				group.addClass('has-error');
-				helper.html(UI.lang.validate[valid]);
+				helper.html(UI.lang.validate[valid]).addClass('animated shake');
+				setTimeout(function () {
+					return helper.removeClass('animated shake');
+				}, 500);
 				return false;
 			}
 		}
@@ -43,6 +46,7 @@
 			passed = true;
 		for (; i < len; i++) {
 			if (!one(_$[i])) {
+				passed && _$[i].focus();
 				passed = false;
 			}
 		}

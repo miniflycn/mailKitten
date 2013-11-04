@@ -1,5 +1,6 @@
 @import "var.less";
 @import "mixins.less";
+@import "animate/mixins.less";
 
 body {
   background-color: #8eadaf;
@@ -15,7 +16,7 @@ body {
 
 #pic-cat {
   .size(220px, 229px);
-  .transition(margin-top 4s);
+  .transition(margin-top 3s);
   background-image: url(../pic/cat.png);
   z-index: 100;
   &.in {
@@ -50,3 +51,10 @@ body {
     margin-bottom: 0px;
   }
 }
+
+// CSS3 Animate
+.animated {
+  .make-animate(500ms);
+}
+
+@import "animate/shake.less";
