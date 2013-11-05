@@ -17,24 +17,25 @@
 			var that = this;
 			this.$.addClass('animated slideInRight');
 			setTimeout(function () {
-				that.$.removeClass('animated slideInRight');
+				that.$.removeClass('slideInRight');
 			}, 1000);
 			return this;
 		}
 
 		slideOut = function (url) {
 			this.$.addClass('animated slideOutLeft');
-			setTimeout(function () {
+			url && setTimeout(function () {
 				return location.replace(url);
 			}, 1000);
 			return this;
 		}
 	} else {
 		slideIn = function () {
-
+			// use jQuery
 		}
 
 		slideOut = function (url) {
+			// use jQuery
 			location.replace(url);
 			return this;
 		}

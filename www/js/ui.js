@@ -236,6 +236,41 @@
 }(UI, $)
 
 ;!function (UI, $) {
+	var _user = {};
+
+	function _set(data) {
+		_user['user'] = data.user;
+	}
+
+	function _get(key) {
+		if (key) {
+			return _user[key];
+		} else {
+			return _user;
+		}
+	}
+
+	function auth(arg) {
+		if (typeof arg === 'function') {
+			UI.ajax.get('auth').done(function (data) {
+				if (data.code === 0) {
+					_set(data);
+					return arg(_get());
+				} else {
+					return location.replace('/login.html');
+				}
+			});
+			return this;
+		} else {
+			return _get(arg);
+		}
+	}
+
+	UI.auth = auth;
+
+}(UI, $);
+
+;!function (UI, $) {
 	var supported = !!function () {
 		var style = document.createElement('div').style,
 			prefixs = 'webkit moz o ms'.split(' '),
@@ -254,24 +289,25 @@
 			var that = this;
 			this.$.addClass('animated slideInRight');
 			setTimeout(function () {
-				that.$.removeClass('animated slideInRight');
+				that.$.removeClass('slideInRight');
 			}, 1000);
 			return this;
 		}
 
 		slideOut = function (url) {
 			this.$.addClass('animated slideOutLeft');
-			setTimeout(function () {
+			url && setTimeout(function () {
 				return location.replace(url);
 			}, 1000);
 			return this;
 		}
 	} else {
 		slideIn = function () {
-
+			// use jQuery
 		}
 
 		slideOut = function (url) {
+			// use jQuery
 			location.replace(url);
 			return this;
 		}

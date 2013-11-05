@@ -6,9 +6,16 @@ body {
   background-color: #8eadaf;
 }
 
+.container {
+  display: none;
+}
+
 // CSS3 Animate
 .animated {
   .make-animate(1s);
+  &.container {
+    display: block;
+  }
 }
 
 @import "animate/slideOutLeft.less";
