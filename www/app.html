@@ -8,69 +8,70 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 </head>
 <body>
-	<nav class="navbar navbar-inverse" role="navigation">
+	<nav class="navbar navbar-inverse" role="navigation" id="kitten-navbar">
 	<div class="navbar-header">
-	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	<span class="sr-only">Toggle navigation</span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-	</button>
-	<a class="navbar-brand" href="#">MailKitten</a>
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">MailKitten</a>
 	</div>
 
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	<ul class="nav navbar-nav">
-	<li class="active"><a href="#">Dashboard</a></li>
-	<li><a href="#">Link</a></li>
-	<li class="dropdown">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-	<ul class="dropdown-menu">
-	<li><a href="#">Action</a></li>
-	<li><a href="#">Another action</a></li>
-	<li><a href="#">Something else here</a></li>
-	<li class="divider"></li>
-	<li><a href="#">Separated link</a></li>
-	<li class="divider"></li>
-	<li><a href="#">One more separated link</a></li>
-	</ul>
-	</li>
+		<li class="active"><a href="#dashboard">Dashboard</a></li>
+		<li><a href="#campaign">Campaign</a></li>
+		<li><a href="#report">Report</a></li>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<li><a href="#">Action</a></li>
+				<li><a href="#">Another action</a></li>
+				<li><a href="#">Something else here</a></li>
+				<li class="divider"></li>
+				<li><a href="#">Separated link</a></li>
+				<li class="divider"></li>
+				<li><a href="#">One more separated link</a></li>
+			</ul>
+		</li>
 	</ul>
 	<ul class="nav navbar-nav navbar-right">
-	<li><a href="#">Link</a></li>
-	<li class="dropdown">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-	<ul class="dropdown-menu">
-	<li><a href="#">Action</a></li>
-	<li><a href="#">Another action</a></li>
-	<li><a href="#">Something else here</a></li>
-	<li class="divider"></li>
-	<li><a href="#">Separated link</a></li>
-	</ul>
-	</li>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<li><a href="#">Action</a></li>
+				<li><a href="#">Another action</a></li>
+				<li><a href="#">Something else here</a></li>
+				<li class="divider"></li>
+				<li><a href="#">Separated link</a></li>
+			</ul>
+		</li>
+		<li><a href="#" data-click="logout"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
 	</ul>
 	</div>
 	</nav>
 
 	<div class="container">
-		<button type="button" class="btn btn-primary btn-lg" id="logout">Logout</button>
 	</div>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="./js/ui.js"></script>
 	<script>
 		$(document).ready(function () {
-			UI('.navbar').slideIn();
+			UI('#kitten-navbar').slideIn();
 			UI('.container').slideIn();
 			UI.auth(function (data) {
-				$('#logout').on('click', function () {
+				UI('#kitten-navbar').on('logout', function () {
 					UI.ajax.get('logout').done(function (data) {
 						if (data.code === 0) {
-							UI('.navbar').slideOut();
+							UI('#kitten-navbar').slideOut();
 							return UI('.container').slideOut('/login.html');
 						}
 					});
 				});
+				UI('#kitten-navbar').scan('click');
 			});			
 		});
 	</script>

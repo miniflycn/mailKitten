@@ -1,6 +1,6 @@
 /*!
  * mailKitten-UI
- * Bootstrap like UI libaray
+ * Bootstrap like UI libaray, just create for mailKitten
  * Copyright (c) 2013 Daniel Yang <miniflycn@justany.net>
  * MIT Licensed
  */
