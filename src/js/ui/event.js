@@ -26,9 +26,13 @@
 			var attr = 'data-' + type,
 				self = this;
 			if (type !== 'enter') {
-				this.$.on(type, '[' + attr + ']', function (event) {
-					var uiType = $.trim($(event.target).attr(attr));
-					return uiType && self.trigger(uiType);
+				this.$.on(type, function (event) {
+					var target = $(event.target).closest('[' + attr + ']'),
+						uiType;
+					if (target.length) {
+						uiType = $.trim(target.attr(attr));
+						return uiType && self.trigger(uiType);
+					}
 				});
 			} else {
 				this.$.on('keyup', '[data-enter]', function (event) {

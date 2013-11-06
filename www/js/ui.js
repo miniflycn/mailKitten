@@ -1,6 +1,6 @@
 /*!
  * mailKitten-UI
- * Bootstrap like UI libaray
+ * Bootstrap like UI libaray, just create for mailKitten
  * Copyright (c) 2013 Daniel Yang <miniflycn@justany.net>
  * MIT Licensed
  */
@@ -164,9 +164,13 @@
 			var attr = 'data-' + type,
 				self = this;
 			if (type !== 'enter') {
-				this.$.on(type, '[' + attr + ']', function (event) {
-					var uiType = $.trim($(event.target).attr(attr));
-					return uiType && self.trigger(uiType);
+				this.$.on(type, function (event) {
+					var target = $(event.target).closest('[' + attr + ']'),
+						uiType;
+					if (target.length) {
+						uiType = $.trim(target.attr(attr));
+						return uiType && self.trigger(uiType);
+					}
 				});
 			} else {
 				this.$.on('keyup', '[data-enter]', function (event) {
