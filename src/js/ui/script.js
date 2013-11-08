@@ -11,7 +11,7 @@
 			cache: true,
 			url: url
 		}).done(function () {
-			return callback(UI[mod]);
+			return callback();
 		});
 	}
 

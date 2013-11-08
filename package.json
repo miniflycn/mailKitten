@@ -22,7 +22,8 @@
     "mocha-lcov-reporter": "*",
     "grunt": "*",
     "grunt-contrib-less": "*",
-    "grunt-contrib-concat": "*"
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-copy": "*"
   },
   "scripts": {
     "test": "mocha",

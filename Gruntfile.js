@@ -40,12 +40,26 @@ module.exports = function (grunt) {
         ],
         dest: 'www/js/ui.js'
       }
+    },
+    copy: {
+      main: {
+        files: [
+          {
+            expand: true,
+            cwd: 'src/js/',
+            src: ['*'], 
+            dest: 'www/js/', 
+            filter: 'isFile'
+          }
+        ]
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('default', ['less:dev', 'concat']);
-  grunt.registerTask('pro', ['less:pro', 'concat']);
+  grunt.registerTask('default', ['less:dev', 'concat', 'copy']);
+  grunt.registerTask('pro', ['less:pro', 'concat', 'copy']);
 };

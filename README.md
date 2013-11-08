@@ -3,6 +3,13 @@
 ## Project Goals
 Learning the relevant knowledge about e-mail.
 
+## Setup
+
+	$ npm install
+	$ node lib/server
+
+And please visit http://localhost:3000/install.html to set config.
+
 ## License
 (The MIT License)
 

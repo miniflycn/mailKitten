@@ -18,6 +18,7 @@
 	UI.fn.init.prototype = UI.fn;
 
 	UI.lang = {};
+	UI.noop = function () {};
 
 	window.UI = UI;
 }($);

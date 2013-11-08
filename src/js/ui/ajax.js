@@ -18,12 +18,22 @@
 	}
 
 	$.extend(ajax, {
+		/**
+		 * get
+		 * @param {String} api
+		 * @return jQuery.Promise
+		 */
 		get: function (api) {
 			return ajax({
 				url: api,
 				type: 'GET'
 			});
 		},
+		/**
+		 * post
+		 * @param {String} api
+		 * @return jQuery.Promise
+		 */
 		post: function (api, data) {
 			return ajax({
 				url: api,
@@ -31,6 +41,11 @@
 				type: 'POST'
 			});
 		},
+		/**
+		 * put
+		 * @param {String} api
+		 * @return jQuery.Promise
+		 */
 		put: function (api, data) {
 			return ajax({
 				url: api,
@@ -38,6 +53,11 @@
 				type: 'PUT'
 			});
 		},
+		/**
+		 * del
+		 * @param {String} api
+		 * @return jQuery.Promise
+		 */
 		del: function (api, data) {
 			return ajax({
 				url: api,
