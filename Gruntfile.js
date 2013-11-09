@@ -36,6 +36,9 @@ module.exports = function (grunt) {
           'src/js/ui/ajax.js',
           'src/js/ui/auth.js',
           'src/js/ui/animate.js',
+          'src/js/ui/oop.js',
+          'src/js/ui/Model.js',
+          'src/js/ui/Form.js',
           'src/js/ui/lang/validate.js'
         ],
         dest: 'www/js/ui.js'

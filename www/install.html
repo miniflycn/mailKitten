@@ -53,27 +53,23 @@
 			$('.off').removeClass('off');
 			$('#pic-cat').addClass('in');
 
-			UI('#install-form').on('submit', function () {
-				if (UI.validate.all('#install-form')) {
-					var user = $('#email').val(),
-						pass = $('#pwd').val(),
-						isp = $('#isp').val(),
-						data = {
-							isp: isp,
-							user: user,
-							pass: pass
-						};
-					UI.ajax.post('install', data).done(function (data) {
-						if (data.code === 0) {
-							return $('.install-container').addClass('off');
-						} else {
-							return UI('#alert-container').alert('danger', data.message);
-						}
-					});
-				}
+			new UI.Form('#install-form', {
+				'submit': function () {
+					if (this.validate()) {
+						this.post('install', {
+							isp: $('#isp').val(),
+							user: $('#email').val(),
+							pass: $('#pwd').val()
+						}).done(function (data) {
+							if (data.code === 0) {
+								return UI('.install-container').slideOut('login.html');
+							} else {
+								return UI('#alert-container').alert('danger', data.message);
+							}
+						});
+					}
+				},
 			});
-			
-			UI('#install-form').scan('click').scan('enter');
 		});
 	</script>
 </body>

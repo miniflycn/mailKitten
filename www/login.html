@@ -48,24 +48,23 @@
 			$('.off').removeClass('off');
 			$('#pic-cat').addClass('in');
 
-			UI('#install-form').on('submit', function () {
-				if (UI.validate.all('#install-form')) {
-					var user = $('#email').val(),
-						pass = $('#pwd').val(),
-						data = {
-							user: user,
-							pass: pass
-						};
-					UI.ajax.post('login', data).done(function (data) {
-						if (data.code === 0) {
-							return UI('.install-container').slideOut('./app.html');
-						} else {
-							return UI('#alert-container').alert('danger', data.message);
-						}
-					});
+			new UI.Form('#install-form', {
+				'submit': function () {
+					var that = this;
+					if (this.validate()) {
+						this.post('login', {
+							user: $('#email').val(),
+							pass: $('#pwd').val()
+						}).done(function (data) {
+							if (data.code === 0) {
+								return UI('.install-container').slideOut('./app.html');
+							} else {
+								UI('#alert-container').alert('danger', data.message);
+							}
+						});
+					}
 				}
 			});
-			UI('#install-form').scan('click').scan('enter');
 		});
 	</script>
 </body>

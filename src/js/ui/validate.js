@@ -53,7 +53,6 @@
 		return passed;
 	}
 
-
 	$.extend(validate, {
 		email: function (value) {
 			if (!$.trim(value)) {
@@ -72,12 +71,8 @@
 		email: (/^[\w\.]+@([a-zA-Z0-9\-]{1,63}\.)+[a-zA-Z0-9\-]{1,63}$/)
 	});
 
-	// Init	
-	$(document).ready(function () {
-		if ($('input[data-validate]').length) {
-			validate();
-		}
-	});
-
+	UI.fn.validate = function () {
+		return all(this.$);
+	}
 	UI.validate = validate;
 }(UI, $);

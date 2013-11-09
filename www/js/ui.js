@@ -18,6 +18,7 @@
 	UI.fn.init.prototype = UI.fn;
 
 	UI.lang = {};
+	UI.noop = function () {};
 
 	window.UI = UI;
 }($);
@@ -106,7 +107,6 @@
 		return passed;
 	}
 
-
 	$.extend(validate, {
 		email: function (value) {
 			if (!$.trim(value)) {
@@ -125,13 +125,9 @@
 		email: (/^[\w\.]+@([a-zA-Z0-9\-]{1,63}\.)+[a-zA-Z0-9\-]{1,63}$/)
 	});
 
-	// Init	
-	$(document).ready(function () {
-		if ($('input[data-validate]').length) {
-			validate();
-		}
-	});
-
+	UI.fn.validate = function () {
+		return all(this.$);
+	}
 	UI.validate = validate;
 }(UI, $);
 
@@ -342,6 +338,104 @@
 		slideOut: slideOut
 	});
 	
+}(UI, $)
+
+;!function (UI, $) {
+	var _hasOwnProperty = Object.prototype.hasOwnProperty;
+
+	function oop(foo) {
+		foo.extend = oop.extend;
+	}	
+
+	$.extend(oop, {
+		// 继承
+		extend: function (protoProps, staticProps) {
+			var parent = this,
+				child;
+			if (protoProps && _hasOwnProperty.call(protoProps, 'constructor')) {
+				child = protoProps.constructor;
+			} else {
+				child = function () {
+					return parent.apply(this, arguments);
+				}
+			}
+			$.extend(child, parent, staticProps);
+			function ctor() { 
+				this.constructor = child; 
+			}
+			ctor.prototype = parent.prototype;
+			child.prototype = new ctor();
+			if (protoProps) $.extend(child.prototype, protoProps);
+
+			child.__super__ = parent.prototype;
+			return child;
+		},
+		// 组合
+		merge: function (_this, instance, context) {
+			if (context) {
+				$.each(instance, function (key, value) {
+					typeof value === 'function' ?
+						 _this[key] = $.proxy(value, context) :
+						 _this[key] = value;
+				});
+			} else {
+				$.extend(_this, instance);
+			}
+		}
+	});
+
+	UI.oop = oop;
+
+}(UI, $)
+
+;!function (UI, $) {
+
+	function Model(container, events) {
+		var that = this;
+		this._ = UI(container);
+		if (events) {
+			this.events = events;
+			$.each(events, function (key, value) {
+				that.on(key, value);
+			});
+		}
+		this.init && this.init(arguments);
+	}
+	Model.prototype = {
+		constructor: Model,
+		scan: function (type) {
+			this._.scan(type);
+			return this;
+		},
+		on: function (type, callback) {
+			this._.on(type, $.proxy(callback, this));
+			return this;
+		}
+	}
+	
+	UI.oop(Model);
+	UI.Model = Model;
+
+}(UI, $)
+
+;!function (UI, $) {
+
+	UI.Form = UI.Model.extend({
+		init: function () {
+			if ($('input[data-validate]', this._.$).length) {
+				UI.validate();
+			}
+			this.scan('click').scan('enter');
+			return this;
+		},
+		validate: function () {
+			return this._.validate();
+		},
+		post: function (api, data) {
+			return UI.ajax.post(api, data);
+		}
+	});
+
 }(UI, $)
 
 ;!function (UI) {
