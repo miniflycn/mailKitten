@@ -6,7 +6,11 @@
 	}	
 
 	$.extend(oop, {
-		// 继承
+		/**
+		 * extend
+		 * @param {Object} protoProps
+		 * @param {Object} staticProps
+		 */
 		extend: function (protoProps, staticProps) {
 			var parent = this,
 				child;
@@ -28,16 +32,21 @@
 			child.__super__ = parent.prototype;
 			return child;
 		},
-		// 组合
-		merge: function (_this, instance, context) {
+		/**
+		 * merge
+		 * @param {Object} that
+		 * @param {Object} instance
+		 * @param {Object} context
+		 */
+		merge: function (that, instance, context) {
 			if (context) {
 				$.each(instance, function (key, value) {
 					typeof value === 'function' ?
-						 _this[key] = $.proxy(value, context) :
-						 _this[key] = value;
+						 that[key] = $.proxy(value, context) :
+						 that[key] = value;
 				});
 			} else {
-				$.extend(_this, instance);
+				$.extend(that, instance);
 			}
 		}
 	});
