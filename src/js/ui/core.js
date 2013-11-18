@@ -6,6 +6,11 @@
  */
 !function ($) {
 
+	/**
+	 * UI
+	 * @class
+	 * @param {Stirng} selector
+	 */
 	function UI(selector) {
 		return new UI.fn.init(selector);
 	}

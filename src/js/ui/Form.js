@@ -24,6 +24,14 @@
 		 */
 		post: function (api, data) {
 			return UI.ajax.post(api, data);
+		},
+
+		/**
+		 * get
+		 * @param {String} api
+		 */
+		get: function (api) {
+			return UI.ajax.get(api);
 		}
 	});
 
